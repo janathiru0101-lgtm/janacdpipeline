@@ -1,37 +1,27 @@
 pipeline {
     agent any
-
     stages {
         stage('Clone') {
             steps {
-                // Ensure this URL is your actual project URL
-                git branch: 'main', url: 'https://github.com/your-username/your-repo.git'
-                echo 'Source code pulled successfully.'
+                git branch: 'main', url: 'https://github.com/janathiru0101-lgtm/janacdpipeline.git'
             }
         }
-
         stage('Build') {
             steps {
                 echo 'Building Application...'
-                // Just listing files to prove the build environment is ready
-                sh 'ls -ltr' 
+                // Use 'bat' for Windows, and 'dir' instead of 'ls'
+                bat 'dir' 
             }
         }
-
         stage('Test') {
             steps {
-                echo 'Testing Application...'
-                echo 'Artifact verification passed.'
+                echo 'Running Tests...'
             }
         }
-
         stage('Deploy') {
             steps {
                 echo 'Deploying to Cloud...'
-                // If you are not using a plugin, this is the standard way to deploy:
-                // sh 'scp index.html user@your-cloud-ip:/var/www/html/'
-                
-                echo 'Deployment status: SUCCESS'
+                echo 'Deployment Successful!'
             }
         }
     }
